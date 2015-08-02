@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  # root 'welcome#index'
+   root 'vacation_envy#index'
 
 
   get '/signup' => 'users#new', as: :signup
   post '/users' => 'users#create', as: :users
+
+  get '/login' => 'session#new', as: :login
+  post '/auth' => 'session#create', as: :auth
+  get '/logout' => 'session#destroy', as: :logout
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,27 @@
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </button>
+         <%= link_to "Vacation Envy", root_path, class:"navbar-brand" %>
+      </div>
+
+        <ul class="nav navbar-nav navbar-right">
+
+          <% if @current_user.nil? %>
+            <li class:"login"> <%= link_to "Log in",  login_path%> </li>
+            <li> <%=link_to "Sign up", signup_path  %> </li>
+
+          <%else%>
+            <li > <%= link_to "Logout", logout_path %> </li>
+          <%end%>
+        </ul>
+      </div>
+    </div> <!--collapse navbar -->
+    </div>
+  </nav>

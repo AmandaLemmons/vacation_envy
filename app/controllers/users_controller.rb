@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @current_user = User.find_by id: @user_id
 
     if @current_user.nil?
-      redirect_to login_path
+      redirect_to root_path
     end
   end
 
@@ -16,21 +16,10 @@ class UsersController < ApplicationController
   end
 
 
-
-  def show
-    @user = User.find(params[:id])
-    @users = User.all
-  end
-
-
-
   def create
-    @user = User.new params.require(:user).permit(:username, :email, :password, :password_confirmation, :first_name, :last_name, :gender)
-      if @user.save
-      session[:user_id] = @user.id
-    else
-      render :new
-    end
+    @user = User.new params.require(:user).permit(:username, :email, :password, :password_confirmation, :first_name, :last_name)
+      @user.save
+      redirect_to root_path
   end
 
 

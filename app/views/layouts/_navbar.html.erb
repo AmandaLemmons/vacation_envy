@@ -14,7 +14,7 @@
         <ul class="nav navbar-nav navbar-right">
 
           <% if @current_user.nil? %>
-            <li class:"login"> <%= link_to "Log in",  login_path%> </li>
+            <li class:"login"> <%= link_to "Log in",  login_path %> </li>
             <li> <%=link_to "Sign up", signup_path  %> </li>
 
           <%else%>

@@ -6,9 +6,11 @@ Rails.application.routes.draw do
 
   get '/signup' => 'users#new', as: :signup
   post '/users' => 'users#create', as: :users
+  get '/users/:id' => 'users#show', as: :user
+
 
   get '/login' => 'session#new', as: :login
-  post '/auth' => 'session#create', as: :auth
+  post 'auth' => 'session#create', as: :auth
   get '/logout' => 'session#destroy', as: :logout
 
 

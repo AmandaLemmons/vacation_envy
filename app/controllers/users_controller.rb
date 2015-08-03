@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @current_user = User.find_by id: @user_id
 
     if @current_user.nil?
-      redirect_to root_path
+      redirect_to login_path
     end
   end
 
@@ -18,17 +18,17 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new params.require(:user).permit(:username, :email, :password, :password_confirmation, :first_name, :last_name)
-      @user.save
-      redirect_to root_path
+      if @user.save
+        flash[:success] = "Welcome to Vacation Envy"
+        session[:user_id] = @user.id
+        redirect_to @user
+      else
+        render :new
+      end
   end
 
-
-  def destroy
-    session.delete :user_id
-    redirect_to index_path
+  def show
+    @user = User.find params[:id]
   end
-
-
-
 
 end
